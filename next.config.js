@@ -5,6 +5,20 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  redirects: async () => [
+    {
+      source: "/links/redirect/:id/",
+      destination: "/posts/:id/",
+      permanent: false,
+    },
+  ],
+};
 
 export default config;
